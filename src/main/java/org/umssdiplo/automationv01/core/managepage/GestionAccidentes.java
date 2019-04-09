@@ -12,7 +12,7 @@ public class GestionAccidentes extends BasePage {
     private WebElement accidenteDescripcion;
     @FindBy(id = "AccidenteTipo")
     private WebElement accidenteTipo;
-    @FindBy(css = ".crearAccidente")
+    @FindBy(id = "CrearAccidente")
     private WebElement crearAccidenteButton;
 
     public void setAccidentFields() {
