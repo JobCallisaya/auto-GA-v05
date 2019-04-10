@@ -21,9 +21,14 @@ public class HomePageStepDefinitions {
         this.gestionAccidentes = home.clickOnAccidentesMenuItem();
     }
 
-    @Then("fill 'Accidente' fields in 'Accident' form")
+    @Then("fill 'Crear Accidente' fields in 'Accident' form")
     public void FillAccidentFields() throws Throwable {
         this.gestionAccidentes.setAccidentFields();
+    }
+
+    @Then("fill 'Editar Accidente' fields in 'Accident' form")
+    public void FillEditarAccidentFields() throws Throwable {
+        this.gestionAccidentes.setEditarAccidentFields();
     }
 
     @And("click 'GuardarAccidente' button in 'Accident' form")

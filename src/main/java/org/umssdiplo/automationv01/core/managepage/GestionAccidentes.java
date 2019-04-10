@@ -31,6 +31,13 @@ public class GestionAccidentes extends BasePage {
         CommonEvents.selectValue(severidad, "Alta");
     }
 
+    public void setEditarAccidentFields() {
+        CommonEvents.setInputField(accidenteNombre, "AccidenteModificado1");
+        CommonEvents.setInputField(accidenteDescripcion, "DescripcionModificada1");
+        CommonEvents.selectValue(accidenteTipo, "AccidenteDePersonal");
+        CommonEvents.selectValue(severidad, "Baja");
+    }
+
     public void clickGuardarAccidente() {
         CommonEvents.clickButton(this.guardarAccidente);
     }
