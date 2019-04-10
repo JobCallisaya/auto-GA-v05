@@ -1,10 +1,22 @@
 # Login feature review the behavior in thie feature
 Feature: Accidentes
 
-  Background: Home page loaded
-    Given  SCA page is loaded
+  Background: SCA page is loaded
+    Given SCA page is loaded
 
-  Scenario: Go to Accidentes page
-    Given Accidentes menu item is clicked
+  Scenario: Crear accidentes
+    Given click 'Accidentes' button in 'SideMenu'
+    Then fill 'Accidente' fields in 'Accident' form
+    And click 'GuardarAccidente' button in 'Accident' form
+
+  Scenario: Editar accidentes
+    Given click 'Accidentes' button in 'SideMenu'
+    Then click 'EditarAccidente' button in 'Accident' form
+    And fill 'Accidente' fields in 'Accident' form
+    And click 'GuardarAccidente' button in 'Accident' form
+
+  Scenario: Borrar accidentes
+    Given click 'Accidentes' button in 'SideMenu'
+    Then click 'BorrarAccidente' button in 'Accident' form
 
 

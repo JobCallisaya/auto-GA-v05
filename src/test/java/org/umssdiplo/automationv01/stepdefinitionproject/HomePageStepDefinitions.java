@@ -25,4 +25,19 @@ public class HomePageStepDefinitions {
     public void FillAccidentFields() throws Throwable {
         this.gestionAccidentes.setAccidentFields();
     }
+
+    @And("click 'GuardarAccidente' button in 'Accident' form")
+    public void GuardarAccidentFields() throws Throwable {
+        this.gestionAccidentes.clickGuardarAccidente();
+    }
+
+    @And("click 'EditarAccidente' button in 'Accident' form")
+    public void EditarAccidentFields() throws Throwable {
+        this.gestionAccidentes.clickEditarAccidente();
+    }
+
+    @And("click 'BorrarAccidente' button in 'Accident' form")
+    public void BorrarAccidentFields() throws Throwable {
+        this.gestionAccidentes.clickBorrarAccidente();
+    }
 }

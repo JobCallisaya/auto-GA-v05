@@ -11,12 +11,35 @@ public class GestionAccidentes extends BasePage {
     private WebElement accidenteDescripcion;
     @FindBy(id = "AccidenteTipo")
     private WebElement accidenteTipo;
+    @FindBy(id = "Severidad")
+    private WebElement severidad;
     @FindBy(id = "GuardarAccidente")
     private WebElement guardarAccidente;
+    @FindBy(id = "EditarAccidente")
+    private WebElement editarAccidente;
+    @FindBy(id = "BorrarAccidente")
+    private WebElement borrarAccidente;
+
+    public GestionAccidentes() {
+        //CommonEvents.waitWebElement(element);
+    }
 
     public void setAccidentFields() {
         CommonEvents.setInputField(accidenteNombre, "Accidente1");
         CommonEvents.setInputField(accidenteDescripcion, "Descripcion1");
+        CommonEvents.selectValue(accidenteTipo, "MedioAmbiente");
+        CommonEvents.selectValue(severidad, "Alta");
+    }
+
+    public void clickGuardarAccidente() {
         CommonEvents.clickButton(this.guardarAccidente);
+    }
+
+    public void clickEditarAccidente() {
+        CommonEvents.clickButton(this.editarAccidente);
+    }
+
+    public void clickBorrarAccidente() {
+        CommonEvents.clickButton(this.borrarAccidente);
     }
 }
