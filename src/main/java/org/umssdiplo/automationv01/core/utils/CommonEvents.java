@@ -53,11 +53,11 @@ public class CommonEvents {
         return element;
     }
 
-    public static void isNotVisible(By by) {
+    public static void isVisible(By by) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    public static void isVisible(By by) {
+    public static void isNotVisible(By by) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
 

@@ -28,20 +28,14 @@ public class GestionAccidentes extends BasePage {
 
     public void setNombreField(String nombre) {
         CommonEvents.setInputField(accidenteNombre, nombre);
-        CommonEvents.setInputField(accidenteDescripcion, "Descripcion1");
-        CommonEvents.selectValue(accidenteTipo, "MedioAmbiente");
-        CommonEvents.selectValue(severidad, "Alta");
     }
 
     public void setDescripcionField(String descripcion) {
         CommonEvents.setInputField(accidenteDescripcion, descripcion);
-        CommonEvents.selectValue(accidenteTipo, "MedioAmbiente");
-        CommonEvents.selectValue(severidad, "Alta");
     }
 
     public void setTipoField(String tipo) {
         CommonEvents.selectValue(accidenteTipo, tipo);
-        CommonEvents.selectValue(severidad, "Alta");
     }
 
     public void setSeveridadField(String severidadValue) {
@@ -92,6 +86,7 @@ public class GestionAccidentes extends BasePage {
     public boolean isAccidentDeleted() {
         By by = By.xpath("//td[contains(text(),'AccidenteModificado1')]");
         try {
+            CommonEvents.isNotVisible(by);
             CommonEvents.getElement(by);
         } catch (NoSuchElementException ex) {
             return true;
