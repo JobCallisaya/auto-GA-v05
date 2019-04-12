@@ -35,8 +35,30 @@ public class CommonEvents {
         selectItem.click();
     }
 
-    public static void waitWebElement(WebElement element) {
-        //ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.)
+    public static void clickElement(By by) {
+        WebDriver webDriver = ManageDriver.getInstance().getWebDriver();
+        WebDriverWait waitDriver = ManageDriver.getInstance().getWebDriverWait();
+
+        WebElement element =  webDriver.findElement(by);
+        waitDriver.until(ExpectedConditions.visibilityOf(element));
+        element.click();
+    }
+
+    public static WebElement getElement(By by){
+        WebDriver webDriver = ManageDriver.getInstance().getWebDriver();
+        WebDriverWait waitDriver = ManageDriver.getInstance().getWebDriverWait();
+
+        WebElement element = webDriver.findElement(by);
+        //return waitDriver.until(ExpectedConditions.elementToBeClickable(by));
+        return element;
+    }
+
+    public static void isNotVisible(By by) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    public static void isVisible(By by) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
 
     /**
