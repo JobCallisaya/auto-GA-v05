@@ -10,7 +10,7 @@ public class ProductSelectionPage extends BasePage {
     @FindBy(xpath = "//span[@class='gl-price__value gl-price__value--sale']")
     private WebElement shoesPriceBeforeBuying;
 
-    @FindBy(name = "//a[@href='/calzado-de-futbol-x-18.3-tf/BB9398.html']")
+    @FindBy(name = "(//a[@href='/calzado-de-futbol-x-18.3-tf/BB9398.html'])[1]")
     private WebElement shoeLink;
 
     @FindBy(css = ".btn-primary.btn-block")
@@ -24,6 +24,8 @@ public class ProductSelectionPage extends BasePage {
     }
 
     public void clickOnShoeLink() {
-        CommonEvents.clickButton(this.shoeLink);
+        By by = By.xpath("(//a[@href='/calzado-de-futbol-x-18.3-tf/BB9398.html'])[1]");
+        CommonEvents.isVisible(by);
+        CommonEvents.clickElement(by);
     }
 }
