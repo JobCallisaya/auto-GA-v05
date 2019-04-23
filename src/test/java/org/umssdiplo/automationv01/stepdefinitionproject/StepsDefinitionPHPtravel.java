@@ -2,6 +2,8 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Login.HomePage;
 import org.umssdiplo.automationv01.core.managepage.ProductSelectionPage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -16,9 +18,9 @@ public class StepsDefinitionPHPtravel {
         homePage = LoadPage.homePage();
     }
 
-    @And("^hover on 'HOMBRE' link in header$")
-    public void hoverOnHombresLinkInHeader() throws Throwable {
-        this.homePage.hoverHeaderLink();
+    @And("^hover on \"([^\"]*)\" link in header$")
+    public void hoverOnHombresLinkInHeader(String menuItem) throws Throwable {
+        this.homePage.hoverHeaderLink(menuItem);
     }
 
     @And("^click on 'Futbol' link sub menu$")
@@ -27,13 +29,40 @@ public class StepsDefinitionPHPtravel {
     }
 
 
-    @And("get price from 'CALZADO DE FUTBOL X 18.3 TF' shoe")
-    public void getPriceFromCalzado() throws Throwable {
-        this.shoePrice = this.productSelectionPage.getShoesPrice();
+    @And("get price from \"([^\"]*)\" shoes")
+    public void getPriceFromCalzado(String shoesName) throws Throwable {
+        this.shoePrice = this.productSelectionPage.getShoesPrice(shoesName);
     }
 
-    @And("click on 'CALZADO DE FUTBOL X 18.3 TF' link")
-    public void clickOnShoeLink() throws Throwable {
-        this.productSelectionPage.clickOnShoeLink();
+    @And("click on \"([^\"]*)\" link")
+    public void clickOnShoeLink(String shoesName) throws Throwable {
+        this.productSelectionPage.clickOnShoeLink(shoesName);
+    }
+
+    @And("click on \"([^\"]*)\" dropdown")
+    public void clickOnDropDown(String dropdownName) throws Throwable {
+        this.productSelectionPage.clickOnDropDown(dropdownName);
+    }
+
+    @And("select on \"([^\"]*)\" dropdown item")
+    public void selectDropdownItem(String dropdownItemName) throws Throwable {
+        this.productSelectionPage.selectDropdownItem(dropdownItemName);
+    }
+
+    @And("click on \"([^\"]*)\" button")
+    public void clickOnButton(String buttonName) throws Throwable {
+        this.productSelectionPage.clickOnButton(buttonName);
+    }
+
+    @Then("verify that quantity is \"([^\"]*)\"")
+    public void verifyQuantity(String quantityExpected) throws Throwable {
+        String quantityActual = this.productSelectionPage.getQuantity();
+        Assert.assertEquals(quantityActual, quantityExpected);
+    }
+
+    @And("verify \"([^\"]*)\" title is displayed")
+    public void verifyTitleIsDisplayed(String titleExpected) throws Throwable {
+        String titleActual = this.productSelectionPage.getItemTitle();
+        Assert.assertEquals(titleActual, titleExpected);
     }
 }

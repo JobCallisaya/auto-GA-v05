@@ -9,15 +9,14 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class HomePage extends BasePage {
-    @FindBy(xpath = "//a[@href='/hombre']")
-    private WebElement hombresLink;
-
     @FindBy(name = "//a[@href='/calzado_de_futbol-hombre']")
     private WebElement futbolLink;
 
-    public void hoverHeaderLink() {
-        CommonEvents.isVisible(By.xpath("//a[@href='/hombre']"));
-        CommonEvents.hover(this.hombresLink);
+    public void hoverHeaderLink(String menuItemName) {
+        By by = By.xpath("//a[@href='/" + menuItemName + "']");
+        CommonEvents.isVisible(by);
+        WebElement menuItem = CommonEvents.getElement(by);
+        CommonEvents.hover(menuItem);
     }
 
     public ProductSelectionPage clickOnFutbolLink() {

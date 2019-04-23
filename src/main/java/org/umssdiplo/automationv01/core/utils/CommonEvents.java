@@ -115,6 +115,10 @@ public class CommonEvents {
         return webElement.getText();
     }
 
+    public static String getTextContent(By by) {
+        return CommonEvents.getElement(by).getText();
+    }
+
     /**
      * This method get title of current page.
      *
@@ -124,8 +128,8 @@ public class CommonEvents {
         return ManageDriver.getInstance().getWebDriver().getTitle();
     }
 
-    public static void isVisible(By by) {
-        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(by));
+    public static WebElement isVisible(By by) {
+        return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     public static void isNotVisible(By by) {
