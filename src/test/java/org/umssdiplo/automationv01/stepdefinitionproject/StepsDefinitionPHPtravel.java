@@ -54,15 +54,32 @@ public class StepsDefinitionPHPtravel {
         this.productSelectionPage.clickOnButton(buttonName);
     }
 
+    @And("click on 'Ver carrito' button")
+    public void clickOnVerCarrito() throws Throwable {
+        this.productSelectionPage.clickOnVerCarrito();
+    }
+
     @Then("verify that quantity is \"([^\"]*)\"")
     public void verifyQuantity(String quantityExpected) throws Throwable {
         String quantityActual = this.productSelectionPage.getQuantity();
-        Assert.assertEquals(quantityActual, quantityExpected);
+        Assert.assertEquals(quantityActual.toLowerCase(), quantityExpected.toLowerCase());
     }
 
     @And("verify \"([^\"]*)\" title is displayed")
     public void verifyTitleIsDisplayed(String titleExpected) throws Throwable {
         String titleActual = this.productSelectionPage.getItemTitle();
-        Assert.assertEquals(titleActual, titleExpected);
+        Assert.assertEquals(titleActual.toLowerCase(), titleExpected.toLowerCase());
+    }
+
+    @And("verify price should be \"([^\"]*)\"")
+    public void verifyPriceShouldBe(String quantity) throws Throwable {
+        String actual = this.productSelectionPage.getPrice();
+        Assert.assertEquals(actual, quantity);
+    }
+
+    @And("verify total should be \"([^\"]*)\"")
+    public void verifyTotalShouldBe(String quantity) throws Throwable {
+        String actual = this.productSelectionPage.getTotal();
+        Assert.assertEquals(actual, quantity);
     }
 }

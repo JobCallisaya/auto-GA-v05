@@ -30,33 +30,53 @@ public class ProductSelectionPage extends BasePage {
 
     public void clickOnDropDown(String dropdownName) {
         By by = By.xpath("//button[@class='gl-dropdown__select label dropdown-select' and @title='Elige tu talla']");
+        CommonEvents.isVisible(by);
         CommonEvents.clickElement(by);
     }
 
     public void selectDropdownItem(String dropdownItemName) {
         By by = By.xpath("//button[@class='gl-menu__element' and @title='" + dropdownItemName + "']");
+        CommonEvents.isVisible(by);
         CommonEvents.clickElement(by);
     }
 
     public void clickOnButton(String buttonName) {
         By by = By.xpath("//button[@class='gl-cta gl-cta--primary gl-cta--full-width btn-bag' and contains(text(),'" + buttonName + "')]");
-        CommonEvents.clickElement(by);
+        WebElement element = CommonEvents.isVisible(by);
+        CommonEvents.clickButton(element);
     }
 
     public void clickOnVerCarrito() {
         By by = By.xpath("//a[@href='//www.adidas.mx/on/demandware.store/Sites-adidas-MX-Site/es_MX/Cart-Show' and @class='gl-cta gl-cta--primary gl-cta--full-width gl-vspacing-s']");
+        CommonEvents.isVisible(by);
         CommonEvents.clickElement(by);
     }
 
     public String getQuantity() {
         By by = By.xpath("//span[@data-auto-id='add-to-bag-product-info-qty']");
+        CommonEvents.isVisible(by);
         WebElement element = CommonEvents.getElement(by);
         return element.getText().replace("Cantidad: ", "");
     }
 
     public String getItemTitle() {
-        By by = By.xpath("//a[@href='https://www.adidas.mx/calzado-de-futbol-x-18.3-tf/BB9398_680.html?forceSelSize=BB9398_680' and @class='name']");
+        By by = By.xpath("//a[@class='name' and @href='https://www.adidas.mx/calzado-de-futbol-x-18.3-tf/BB9398_680.html?forceSelSize=BB9398_680']");
+        CommonEvents.isVisible(by);
         WebElement element = CommonEvents.getElement(by);
-        return element.getText();
+        return element.getText().trim();
+    }
+
+    public String getPrice() {
+        By by = By.xpath("//div[@data-ci-test-id='orderTotalProductsDeliveryValue']");
+        CommonEvents.isVisible(by);
+        WebElement element = CommonEvents.getElement(by);
+        return element.getText().trim();
+    }
+
+    public String getTotal() {
+        By by = By.xpath("//div[@data-ci-test-id='orderTotalCartValue']");
+        CommonEvents.isVisible(by);
+        WebElement element = CommonEvents.getElement(by);
+        return element.getText().trim();
     }
 }

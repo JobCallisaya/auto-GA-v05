@@ -13,4 +13,6 @@ Feature: Login
     Then verify that quantity is "1"
     And click on 'Ver carrito' button
     And verify "Calzado de Fútbol X 18.3 TF" title is displayed
+    And verify price should be "$1,329.00"
+    And verify total should be "$1,428.00"
 
